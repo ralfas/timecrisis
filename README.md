@@ -4,12 +4,12 @@
 
 Start up and ssh into VM:
 
-vagrant up
-vagrant ssh
+    vagrant up
+    vagrant ssh
 
 Start ipython notebook:
 
-scl enable python27 "ipython notebook --NotebookApp.ip='192.168.50.4'"
+    scl enable python27 "ipython notebook --NotebookApp.ip='192.168.50.4'"
 
 ## TODO
 
