@@ -1,0 +1,5 @@
+---
+# Work config.
+proxy_env:
+  http_proxy: http://www-cache-otg.reith.bbc.co.uk:80
+  https_proxy: http://www-cache-otg.reith.bbc.co.uk:80

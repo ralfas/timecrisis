@@ -2,23 +2,26 @@
 - name: Add EPEL 6.8.
   shell: rpm -q epel-release-6-8 | grep -qw epel-release-6-8 || rpm -i http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
   sudo: yes
+  environment: proxy_env
 
 - name: Install dependencies using yum.
   yum: name={{ item }} state=present
   sudo: yes
   with_items:
     - centos-release-SCL
-    - curl
     - libselinux-python
+    - curl
     - gcc
     - gcc-c++
     - python27
-    - ghc-pandoc
+    - pandoc
     - rrdtool
+  environment: proxy_env
 
 - name: Install pip with python2.7.
   shell: scl enable python27 "curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python -"
   sudo: yes
+  environment: proxy_env
 
 - name: Install ipython notebook with pip2.7.
   shell: scl enable python27 'pip2.7 install {{ item }}'
@@ -28,14 +31,9 @@
     - tornado
     - jinja
     - ipython[notebook]
+  environment: proxy_env
 
 - name: Install rrdtool-python bindings.
   yum: name=rrdtool-python state=present
   sudo: yes
-
-# Launch command:
-#   scl enable python27 "ipython notebook --NotebookApp.ip='192.168.50.1'"
-# TODO:
-#  - init.d script for ipython
-#  - Ansible service management
-#
+  environment: proxy_env

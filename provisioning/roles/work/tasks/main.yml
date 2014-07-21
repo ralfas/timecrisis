@@ -1,0 +1,3 @@
+---
+# - name: Add proxy to yum conf.
+#   lineinfile: dest=/etc/yum.conf line="proxy=http://www-cache-otg.reith.bbc.co.uk:80" state=present  
