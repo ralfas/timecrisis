@@ -9,7 +9,7 @@ Start up and ssh into VM:
 
 Start ipython notebook:
 
-    scl enable python27 "ipython notebook --NotebookApp.ip='192.168.50.4'"
+    scl enable python27 "ipython notebook --NotebookApp.ip='192.168.50.4' --NotebookApp.open_browser=False --NotebookApp.notebook_dir=/vagrant"
 
 ## TODO
 
