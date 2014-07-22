@@ -11,11 +11,7 @@
     - centos-release-SCL
     - libselinux-python
     - curl
-    - gcc
-    - gcc-c++
     - python27
-    - pandoc
-    - rrdtool
   environment: proxy_env
 
 - name: Install pandoc.
@@ -27,17 +23,33 @@
     - pandoc
   environment: proxy_env
 
-- name: Install rrdtool.
+- name: Install rrdtool deps.
   yum: name={{ item }} state=present
   sudo: yes
   with_items:
     - glib
+    - glib-devel
     - libxml2
+    - libxml2-devel
     - libpng
+    - libpng-devel
     - cairo
+    - cairo-devel
     - pango
-    - rrdtool
+    - pango-devel
   environment: proxy_env
+
+- name: Add Repoforge EL 6.
+  shell: rpm -q rpmforge-release-0.5.3 | grep -qw rpmforge-release-0.5.3 || rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+  sudo: yes
+  environment: proxy_env
+
+- name: Install rrdtool, rrdtool-devel.
+  yum: name={{ item }} state=latest enablerepo=rpmforge-extras
+  sudo: yes
+  with_items:
+    - rrdtool
+    - rrdtool-devel
 
 - name: Install pip with python2.7.
   shell: scl enable python27 "curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python -"
