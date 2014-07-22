@@ -16,4 +16,3 @@ Start ipython notebook:
 - scl Ansible module
 - init.d script for ipython notebook
 - Ansible service management for ipython notebook
-- Verify steps for work host
