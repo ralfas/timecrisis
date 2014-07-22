@@ -18,12 +18,33 @@
     - rrdtool
   environment: proxy_env
 
+- name: Install pandoc.
+  yum: name={{ item }} state=present
+  sudo: yes
+  with_items:
+    - gcc
+    - gcc-c++
+    - pandoc
+  environment: proxy_env
+
+- name: Install rrdtool.
+  yum: name={{ item }} state=present
+  sudo: yes
+  with_items:
+    - glib
+    - libxml2
+    - libpng
+    - cairo
+    - pango
+    - rrdtool
+  environment: proxy_env
+
 - name: Install pip with python2.7.
   shell: scl enable python27 "curl https://raw.githubusercontent.com/pypa/pip/master/contrib/get-pip.py | python -"
   sudo: yes
   environment: proxy_env
 
-- name: Install ipython notebook with pip2.7.
+- name: Install ipython notebook (and deps) and python-rrdtool with pip2.7.
   shell: scl enable python27 'pip2.7 install {{ item }}'
   sudo: yes
   with_items:
@@ -31,9 +52,5 @@
     - tornado
     - jinja
     - ipython[notebook]
-  environment: proxy_env
-
-- name: Install rrdtool-python bindings.
-  yum: name=rrdtool-python state=present
-  sudo: yes
+    - python-rrdtool
   environment: proxy_env
