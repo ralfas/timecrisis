@@ -65,6 +65,8 @@
     - pyzmq
     - tornado
     - jinja
+    - numpy
+    - matplotlib
     - ipython[notebook]
     - python-rrdtool
   environment: proxy_env
