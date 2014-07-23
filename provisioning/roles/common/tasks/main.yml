@@ -1,4 +1,5 @@
 ---
+# TODO fix this
 - name: Add EPEL 6.8.
   shell: rpm -q epel-release-6-8 | grep -qw epel-release-6-8 || rpm -i http://www.mirrorservice.org/sites/dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
   sudo: yes
@@ -39,6 +40,7 @@
     - pango-devel
   environment: proxy_env
 
+# TODO fix this
 - name: Add Repoforge EL 6.
   shell: rpm -q rpmforge-release-0.5.3 | grep -qw rpmforge-release-0.5.3 || rpm -i http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
   sudo: yes

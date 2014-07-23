@@ -1,3 +1,4 @@
 .vagrant/
 data/
 .ipynb_checkpoints/
+notebooks/
