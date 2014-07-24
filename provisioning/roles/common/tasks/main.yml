@@ -46,8 +46,9 @@
   sudo: yes
   environment: proxy_env
 
+# This needs to be in line with the version of python-rrdtool.
 - name: Install rrdtool, rrdtool-devel.
-  yum: name={{ item }} state=latest enablerepo=rpmforge-extras
+  yum: name={{ item }} state=present enablerepo=rpmforge-extras
   sudo: yes
   with_items:
     - rrdtool
@@ -69,4 +70,5 @@
     - matplotlib
     - ipython[notebook]
     - python-rrdtool
+    - pytz
   environment: proxy_env
